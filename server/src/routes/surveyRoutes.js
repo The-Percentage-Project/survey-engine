@@ -39,7 +39,11 @@ router.post('/', async (req, res) => {
                     const builtModel = new SurveyModel(
                         { ...responses, status: submissionStatus.completed, school },
                     );
-
+                    
+                    // add the timestamp, which is the server side EST current time
+                    let currentESTDateTime = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});
+                    builtModel.timestamp = (new Date(currentESTDateTime)).toISOString();
+                
                     // Save the model to DB
                     await builtModel.save();
 

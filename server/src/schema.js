@@ -402,6 +402,11 @@ const commonQuestions = {
     required: true,
     type: String,
   },
+  timestamp: {
+    id: 'timestamp',
+    required: true,
+    type: String,
+  }
 };
 
 /**
