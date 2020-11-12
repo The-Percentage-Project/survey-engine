@@ -405,7 +405,7 @@ const commonQuestions = {
   timestamp: {
     id: 'timestamp',
     required: true,
-    type: String,
+    type: Date,
   }
 };
 

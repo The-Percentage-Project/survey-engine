@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
                     
                     // add the timestamp, which is the server side EST current time
                     let currentESTDateTime = new Date().toLocaleString("en-US", {timeZone: "America/New_York"});
-                    builtModel.timestamp = (new Date(currentESTDateTime)).toISOString();
+                    builtModel.timestamp = new Date(currentESTDateTime);
                 
                     // Save the model to DB
                     await builtModel.save();
