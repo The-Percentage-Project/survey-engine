@@ -47,9 +47,6 @@ const SingleCheckboxTextCombo = ({question, register, watch, option, identifier}
 const SingleRadioTextCombo = ({question, register, watch, option, identifier, uniqueKey}) => {
     const [isChecked, setIsChecked] = useState(false);
     const handleOnChange = (e) => {
-        console.log("here");
-        console.log(e.target.checked);
-        console.log(isChecked);
         setIsChecked(e.target.checked);
     }
 
@@ -57,7 +54,7 @@ const SingleRadioTextCombo = ({question, register, watch, option, identifier, un
         <Label key={`${uniqueKey}-${option}-label`} mb={2}>
             <Radio 
                 value={option} ref={register({required: question.required})} value={watch(identifier)} name={question.id}
-                key={`${uniqueKey}-${option}-radio`} che={handleOnChange}
+                key={`${uniqueKey}-${option}-radio`} onChange={handleOnChange}
             />
             {/* TODO-text - separate this out to its own style. Search TODO-text to find all */}
             <Text key={`${uniqueKey}-${option}-text`} sx={{maxWidth: '90%'}}>{option}</Text>
@@ -212,6 +209,7 @@ const questionToComponent = (question, register, watch, errors, contentAccept, s
 }
 
 export function Survey({school, token}) {
+    const dispatch = useDispatch()
 
     const { register, handleSubmit, errors, watch } = useForm();
 
