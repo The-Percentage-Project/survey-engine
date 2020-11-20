@@ -16,7 +16,8 @@
 		"watch:dev": "nodemon",
 		"test": "jest",
 		"schema": "cp ../common/schema.js ./src/schema.js",
-		"heroku": "npm run schema && git push heroku production"
+		"heroku": "npm run schema && git push heroku production",
+		"worker": "node ./dist/jobs/sendEmailJob.js"
 	},
 	"nodemonConfig": {
 		"exec": "npm run dev",
@@ -78,6 +79,7 @@
 		"rate-limit-mongo": "^2.2.0",
 		"regenerator-runtime": "^0.13.7",
 		"rimraf": "^3.0.2",
+		"throng": "^5.0.0",
 		"uuid": "^8.3.0"
 	},
 	"devDependencies": {

@@ -4,16 +4,12 @@ import Queue from 'bull';
 import { submissionStatus, roles } from '../schema';
 import Email from '../models/Email';
 import { encrypt, decrypt, isEmail } from '../utils';
-import { sendStatusEmail } from '../utils/aws';
 import SenderEmail from '../models/SenderEmail';
 
 const router = Router();
 
-const { CORS_ORIGIN } = process.env;
-
 // Connect to a local redis intance locally, and the Heroku-provided URL in production
 const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
-
 
 router.get('/:school', passport.authenticate('jwt', { session: false }), (req, res) => {
     const { role, school } = req.user;
@@ -142,12 +138,6 @@ router.post('/:school/sendEmails', passport.authenticate('jwt', { session: false
 
     if (role === roles.schoolAdmin && userSchool === school) {
         // Find emails e.g. type school: BROWN, status: UNSENT
-        const emails = await Email.find({ school, status: requestType });
-
-        const decryptedEmails = emails.map((model) => (
-            { model, token: model.token, email: decrypt(model.email) }
-        ));
-
         const senderEmail = await SenderEmail.findOne({ school });
         if (!senderEmail) {
             return res.status(400).send(JSON.stringify({ error: 'Please set a sender email first.' }));
@@ -157,45 +147,12 @@ router.post('/:school/sendEmails', passport.authenticate('jwt', { session: false
         const sendMailQueue = new Queue('sendMail', REDIS_URL);
         const data = {
             senderEmail,
-            emails: decryptedEmails,
             requestType,
             school,
         };
 
         // 2. Adding a Job to the Queue
-        sendMailQueue.add(data);
-        // TODO-Cleanup: move processing to separate file
-        sendMailQueue.process(async (job) => {
-            try {
-                let count = 0;
-                let error = 0;
-                const jobData = job.data;
-                for (const email of jobData.emails) {
-                    // Make a survey URL for the thing that we need
-                    const surveyUrl = `${CORS_ORIGIN}/survey?token=${email.token}&school=${jobData.school}`;
-                    const unsubscribeUrl = `${CORS_ORIGIN}/unsubscribe?token=${email.token}`;
-                    await sendStatusEmail(email, jobData.requestType, surveyUrl, jobData.school, jobData.senderEmail.email, unsubscribeUrl)
-                          .then(async () => {
-                              // Set it to sent if it hasn't already been sent
-                              if (email.model.status !== submissionStatus.sent) {
-                                  // eslint-disable-next-line no-param-reassign
-                                  email.model.status = submissionStatus.sent;
-                                  await email.model.save();
-                              }
-                              count += 1;
-                          })
-                          .catch((err) => {
-                              console.log(err);
-                              error += 1;
-                          });
-                    await new Promise(r => setTimeout(r, 500)); // in milliseconds
-                };
-                console.log(`For ${jobData.school} and ${jobData.requestType}, ${count} emails were successfully sent. ${error} emails had an error.`);
-            } catch (ex) {
-                console.log(ex);
-                job.moveToFailed();
-            }
-        });
+        await sendMailQueue.add(data);
     } else {
         return res.status(401).send(JSON.stringify({ error: 'Not authorized.' }));
     }
