@@ -123,7 +123,7 @@ const commonQuestions = {
   },
   roleModel: {
     id: 'roleModel',
-    question: 'Do you have a faculty whom you perceive as a role model?',
+    question: 'Do you have a faculty member whom you perceive as a role model?',
     component: 'Radio',
     options: [
       'Yes',
