@@ -33,7 +33,7 @@ export function sendStatusEmail(user, status, surveyUrl, school, senderEmail, un
     case submissionStatus.sent:
         if (school === 'BROWN') {
             email = brownReminder(user, surveyUrl, school, senderEmail, unsubscribeUrl);
-        } else if (school === 'HARVARD') {
+        } else if (school === 'HARVARD' || school === 'PERCENTAGE_PROJECT') {
             email = harvardReminder(user, surveyUrl, school, senderEmail, unsubscribeUrl);
         } else {
             email = reminder(user, surveyUrl, school, senderEmail, unsubscribeUrl);
