@@ -137,7 +137,10 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                       <tr>
                         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit">Dear SEAS,</div>
                 <div style="font-family: inherit; text-align: inherit"><br></div>
-                <div style="font-family: inherit; text-align: inherit">We're conducting a survey on experiences of students studying computer science and related fields at Harvard. We hope to use the survey results to better advocate for diversity, inclusion, and belonging in the CS department.</div><div></div></div></td>
+                <div style="font-family: inherit; text-align: inherit">
+                  WiCS is surveying students about their experiences in computer science and related fields. We hope to use the survey responses to advocate for a more inclusive environment in SEAS. <br><br>
+                  Your response will be anonymous. At the end of the survey, you can enter your email in a raffle to win a $50 gift card.
+                </div><div></div></div></td>
                       </tr>
                     </tbody>
                   </table><table border="0" cellpadding="0" cellspacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed;" width="100%" data-muid="771066b2-ef00-4cd7-9720-c8696cf3d511">
@@ -148,7 +151,7 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                               <tbody>
                                 <tr>
                                 <td align="center" bgcolor="#333333" class="inner-td" style="border-radius:6px; font-size:16px; text-align:center; background-color:inherit;">
-                                  <a href=${escape(surveyUrl)} style="background-color:#333333; border:1px solid #333333; border-color:#333333; border-radius:6px; border-width:1px; color:#ffffff; display:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 18px 12px 18px; text-align:center; text-decoration:none; border-style:solid;" target="_blank">Climate survey</a>
+                                  <a href=${escape(surveyUrl)} style="background-color:#333333; border:1px solid #333333; border-color:#333333; border-radius:6px; border-width:1px; color:#ffffff; display:inline-block; font-size:14px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 18px 12px 18px; text-align:center; text-decoration:none; border-style:solid;" target="_blank">Take the Survey</a>
                                 </td>
                                 </tr>
                               </tbody>
@@ -159,10 +162,13 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                     </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="b331b37b-82b8-46ed-a5a9-813e46a8cb27" data-mc-module-version="2019-10-22">
                     <tbody>
                       <tr>
-                        <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit">We really appreciate your help!</div>
+                        <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit">
+                        We're conducting the survey as part of the <a href="https://percentageproject.com/#/">Percentage Project</a>, a joint artistic and data visualization project started at the University of Pennsylvania. If you have any questions about the survey or the project, please reach out to <a href="mailto:harvardwomenincs@gmail.com">harvardwomenincs@gmail.com</a>.<br><br>
+                        Thank you so much for your participation, and wishing you the best in the new year!
+                        </div>
                 <div style="font-family: inherit; text-align: inherit"><br></div>
-                <div style="font-family: inherit; text-align: inherit"><span style="color: #000000; font-family: arial, helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline">Stay safe,
-                <div style="font-family: inherit; text-align: inherit">The Percentage Project Team</div>
+                <div style="font-family: inherit; text-align: inherit"><span style="color: #000000; font-family: arial, helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline">Warmly,
+                <div style="font-family: inherit; text-align: inherit">Harvard WiCS</div>
                       </tr>
                     </tbody>
                   </table><div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" style="color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5"><p style="font-size:12px; line-height:20px;"><a class="Unsubscribe--unsubscribeLink" href=${escape(unsubscribeUrl)} target="_blank" style="">Unsubscribe</a></p></div></td>
@@ -188,14 +194,13 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                 Data:
                   `Dear SEAS,
 
-                  We're conducting a survey on experiences of students studying computer science and related fields at Harvard. We hope to use the survey results to better advocate for diversity, inclusion, and belonging in the CS department.
-
-                  Climate Survey
-                  
-                  We really appreciate your help!
-
-                  Stay safe,
-                  The Percentage Project Team
+                  WiCS is surveying students about their experiences in computer science and related fields. We hope to use the survey responses to advocate for a more inclusive environment in SEAS.
+                  Your response will be anonymous. At the end of the survey, you can enter your email in a raffle to win a $50 gift card.
+                  Take the Survey
+                  We're conducting the survey as part of the Percentage Project, a joint artistic and data visualization project started at the University of Pennsylvania. If you have any questions about the survey or the project, please reach out to harvardwomenincs@gmail.com.
+                  Thank you so much for your participation, and wishing you the best in the new year!
+                  Warmly,
+                  Harvard WiCS
                   
                   Unsubscribe
                   `,
@@ -203,7 +208,7 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
         },
         Subject: {
             Charset: 'UTF-8',
-            Data: `Reminder: ${formatSchool(school)} Computer Science Survey`,
+            Data: 'Reminder: SEAS Climate Survey - Win a $50 Amazon gift card!',
         },
     },
     Source: `The Percentage Project <${senderEmail}>`,
