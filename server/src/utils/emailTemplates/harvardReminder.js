@@ -139,7 +139,7 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                 <div style="font-family: inherit; text-align: inherit"><br></div>
                 <div style="font-family: inherit; text-align: inherit">
                   WiCS is surveying students studying computer science and related fields for the <a href="https://percentageproject.com/#/">Percentage Project</a>, a storytelling initiative that highlights the experiences of underrepresented minorities in STEM. We are seeking perspectives from undergraduates of all identities, and all responses are anonymous. Your input will help us advocate for a more inclusive environment in SEAS.<br><br>
-                  For each response received, WiCS will donate $1 to <a href="https://d4bl.org/">Data 4 Black Lives</a>. As of this writing, the donation stands at $101 out of the $400 cap.
+                  For each response received, WiCS will donate $1 to <a href="https://d4bl.org/">Data 4 Black Lives</a>, with $100 extra donated if we reach 300 responses. We’ve raised $101 so far through your peers’ responses, and we hope to hit our goal of 300 to reach the bonus donation.
                 </div><div></div></div></td>
                       </tr>
                     </tbody>
@@ -167,7 +167,7 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                         </div>
                 <div style="font-family: inherit; text-align: inherit"><br></div>
                 <div style="font-family: inherit; text-align: inherit"><span style="color: #000000; font-family: arial, helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline">Warmly,
-                <div style="font-family: inherit; text-align: inherit">Harvard WiCS</div>
+                <div style="font-family: inherit; text-align: inherit">Harvard WiCS<br><br><i>**Total donation capped at $400</i></div>
                       </tr>
                     </tbody>
                   </table><div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" style="color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5"><p style="font-size:12px; line-height:20px;"><a class="Unsubscribe--unsubscribeLink" href=${escape(unsubscribeUrl)} target="_blank" style="">Unsubscribe</a></p></div></td>
@@ -194,12 +194,14 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                   `Dear SEAS,
 
                   WiCS is surveying students studying computer science and related fields for the Percentage Project, a storytelling initiative that highlights the experiences of underrepresented minorities in STEM. We are seeking perspectives from undergraduates of all identities, and all responses are anonymous. Your input will help us advocate for a more inclusive environment in SEAS.
-                  For each response received, WiCS will donate $1 to Data 4 Black Lives. As of this writing, the donation stands at $101 out of the $400 cap.
+                  For each response received, WiCS will donate $1 to Data 4 Black Lives, with $100 extra donated if we reach 300 responses. We’ve raised $101 so far through your peers’ responses, and we hope to hit our goal of 300 to reach the bonus donation.
                   Take the Survey
                   If you have any questions about the survey or the project, please contact harvardwomenincs@gmail.com. Thank you so much for your participation, and wishing you the best in the new year.
+                  
                   Warmly,
                   Harvard WiCS
-                                    
+                  ** Total donation capped at $400.
+          
                   Unsubscribe
                   `,
             },
