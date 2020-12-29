@@ -138,8 +138,8 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit">Dear SEAS,</div>
                 <div style="font-family: inherit; text-align: inherit"><br></div>
                 <div style="font-family: inherit; text-align: inherit">
-                  WiCS is surveying students about their experiences in computer science and related fields. We hope to use the survey responses to advocate for a more inclusive environment in SEAS. <br><br>
-                  Your response will be anonymous. At the end of the survey, you can enter your email in a raffle to win a $50 gift card.
+                  WiCS is surveying students studying computer science and related fields for the <a href="https://percentageproject.com/#/">Percentage Project</a>, a storytelling initiative that highlights the experiences of underrepresented minorities in STEM. We are seeking perspectives from undergraduates of all identities, and all responses are anonymous. Your input will help us advocate for a more inclusive environment in SEAS.<br><br>
+                  For each response received, WiCS will donate $1 to <a href="https://d4bl.org/">Data 4 Black Lives</a>. As of this writing, the donation stands at $101 out of the $400 cap.
                 </div><div></div></div></td>
                       </tr>
                     </tbody>
@@ -163,8 +163,7 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                     <tbody>
                       <tr>
                         <td style="padding:18px 0px 18px 0px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit">
-                        We're conducting the survey as part of the <a href="https://percentageproject.com/#/">Percentage Project</a>, a joint artistic and data visualization project started at the University of Pennsylvania. If you have any questions about the survey or the project, please reach out to <a href="mailto:harvardwomenincs@gmail.com">harvardwomenincs@gmail.com</a>.<br><br>
-                        Thank you so much for your participation, and wishing you the best in the new year!
+                        If you have any questions about the survey or the project, please contact <a href="mailto:harvardwomenincs@gmail.com">harvardwomenincs@gmail.com</a>. Thank you so much for your participation, and wishing you the best in the new year.
                         </div>
                 <div style="font-family: inherit; text-align: inherit"><br></div>
                 <div style="font-family: inherit; text-align: inherit"><span style="color: #000000; font-family: arial, helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: pre-wrap; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline">Warmly,
@@ -194,21 +193,20 @@ export default (user, surveyUrl, school, senderEmail, unsubscribeUrl) => ({
                 Data:
                   `Dear SEAS,
 
-                  WiCS is surveying students about their experiences in computer science and related fields. We hope to use the survey responses to advocate for a more inclusive environment in SEAS.
-                  Your response will be anonymous. At the end of the survey, you can enter your email in a raffle to win a $50 gift card.
+                  WiCS is surveying students studying computer science and related fields for the Percentage Project, a storytelling initiative that highlights the experiences of underrepresented minorities in STEM. We are seeking perspectives from undergraduates of all identities, and all responses are anonymous. Your input will help us advocate for a more inclusive environment in SEAS.
+                  For each response received, WiCS will donate $1 to Data 4 Black Lives. As of this writing, the donation stands at $101 out of the $400 cap.
                   Take the Survey
-                  We're conducting the survey as part of the Percentage Project, a joint artistic and data visualization project started at the University of Pennsylvania. If you have any questions about the survey or the project, please reach out to harvardwomenincs@gmail.com.
-                  Thank you so much for your participation, and wishing you the best in the new year!
+                  If you have any questions about the survey or the project, please contact harvardwomenincs@gmail.com. Thank you so much for your participation, and wishing you the best in the new year.
                   Warmly,
                   Harvard WiCS
-                  
+                                    
                   Unsubscribe
                   `,
             },
         },
         Subject: {
             Charset: 'UTF-8',
-            Data: 'Reminder: SEAS Climate Survey - Win a $50 Amazon gift card!',
+            Data: 'Reminder: SEAS Climate Survey [Donation to Data 4 Black Lives on your behalf!]',
         },
     },
     Source: `The Percentage Project <${senderEmail}>`,

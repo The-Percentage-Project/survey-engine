@@ -597,7 +597,7 @@ const pennQuestions = {
   },
 };
 const harvardQuestions = {
-  questionOrder: [...commonOrder.slice(0, 4), 'harvard1', 'harvard2', ...commonOrder.slice(4), ...demographicOrder, 'harvard3', 'harvard4'],
+  questionOrder: [...commonOrder.slice(0, 4), 'harvard1', 'harvard2', ...commonOrder.slice(4), ...demographicOrder, 'harvard3'],
   customQuestions: {
     major: {
       id: 'major',
@@ -694,14 +694,6 @@ const harvardQuestions = {
       text1: 'Would you be interested in being interviewed by the Percentage Project about your experience? If so, please submit your email at ',
       text2: '. Please note that your email will be submitted separately from your other question responses.',
       url: 'https://tiny.cc/stem-interview',
-    },
-    harvard4: {
-      id: 'harvard4',
-      heading: '[Optional] Raffle',
-      component: 'TextWithLink',
-      text1: 'As a thank you for your participation, we are holding a raffle for a $50 Amazon gift card. If you would like to enter the raffle, please submit your email at ',
-      text2: '. Please note that your email will be submitted separately from your other question responses.',
-      url: 'https://forms.gle/JvRtyNLobAvzLWmV8',
     },
   },
 };
