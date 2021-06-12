@@ -29,20 +29,14 @@ const specify_question_keywords = ['Please specify', 'Prefer to self-describe'];
 // an array of keywords of the identifiers in custom input form for checkbox/radio (such that we can remove it later )
 const specify_keyword_arrays = [];
 
-const MappedOptions = ({question, register, watch}) => question.options.map(option => {
+const MappedOptions = ({question, register, watch, errors}) => question.options.map(option => {
     // choose check boc based on if we need user to specify
     const specify_keyword = specify_question_keywords.find(keyword => option.includes(keyword));
     if (specify_keyword) { 
-        let identifier = question.id + ' ' + specify_keyword
-        specify_keyword_arrays.push(identifier)
-        return (
-            <Label mb={2} key={option} >
-                <Checkbox ref={register({required: question.required})} value={watch(identifier)} name={question.id} key={`${option}-box`} />
-                {/* TODO-text - separate this out to its own style. Search TODO-text to find all */}
-                <Text key={`${option}-text`} sx={{maxWidth: '90%'}}>{option}</Text>
-                <Input variant="noBorder" name={identifier} ref={register} key={`${question.id}-${option}-custom-input`} />
-            </Label>
-        )
+        let identifier = question.id + ' ' + specify_keyword;
+        specify_keyword_arrays.push(identifier);
+        
+        return <SingleCheckboxTextCombo question={question} register={register} watch={watch} option={option} identifier={identifier} errors={errors}/>
     } else {
         return (
             <Label mb={2} key={option} >
@@ -58,22 +52,12 @@ const MappedOptions = ({question, register, watch}) => question.options.map(opti
 const CustomRadio = ({question, register, watch, errors}) => {
     // get radio contents based on if we need custom input
     const radioContents = question.options.map(option => {
-        const uniqueKey = question.id
+        const uniqueKey = question.id;
         const specify_keyword = specify_question_keywords.find(keyword => option.includes(keyword));
         if (specify_keyword) {
             let identifier = question.id + ' ' + specify_keyword
             specify_keyword_arrays.push(identifier)
-            return (
-                <Label key={`${uniqueKey}-${option}-label`} mb={2}>
-                    <Radio 
-                        value={option} ref={register({required: question.required})} value={watch(identifier)} name={question.id}
-                        key={`${uniqueKey}-${option}-radio`}
-                    />
-                    {/* TODO-text - separate this out to its own style. Search TODO-text to find all */}
-                    <Text key={`${uniqueKey}-${option}-text`} sx={{maxWidth: '90%'}}>{option}</Text>
-                    <Input variant="noBorder" name={identifier} ref={register} key={`${uniqueKey}-${option}-custom-input`} />
-                </Label>
-            )
+            return <SingleRadioTextCombo question={question} register={register} watch={watch} option={option} identifier={identifier} uniqueKey={uniqueKey}/>
         } else {
             return (
                 <Label key={`${uniqueKey}-${option}-label`}mb={2}>
@@ -118,7 +102,7 @@ const CustomMultiCheckbox = ({ question, register, watch, errors}) => {
                 }}>
                 {question.question}
             </Text>
-            <MappedOptions key={`${question.id}-options-parent`} question={question} register={register} watch={watch}/>
+            <MappedOptions key={`${question.id}-options-parent`} question={question} register={register} watch={watch} errors={errors}/>
             {errors[question.id] && question.required && <p>This field is required</p>}
         </>)
 }
@@ -180,6 +164,45 @@ const TextWithLink = ({question}) => {
                 {question.text2}
             </Text>
         </>
+    )
+}
+
+const SingleCheckboxTextCombo = ({question, register, watch, option, identifier, errors}) => {
+    const [isChecked, setIsChecked] = useState(false);
+    const handleOnChange = (e) => {
+        setIsChecked(e.target.checked);
+    }
+
+    return (
+        <Label mb={2} key={option} >
+            <Checkbox ref={register({required: question.required})} value={watch(identifier)} name={question.id} key={`${option}-box`} onChange={handleOnChange}/>
+            {/* TODO-text - separate this out to its own style. Search TODO-text to find all */}
+            <Text key={`${option}-text`} sx={{maxWidth: '90%'}}>{option}</Text>
+            {isChecked?(
+                <Input variant="noBorder" name={identifier} ref={register({ required: true })}
+                    key={`${question.id}-${option}-custom-input`} />
+            ):null}
+            {errors[identifier] && <p>This field is required</p>}
+        </Label>
+    )
+}
+
+const SingleRadioTextCombo = ({question, register, watch, option, identifier, uniqueKey}) => {
+    const [isChecked, setIsChecked] = useState(false);
+    const handleOnChange = (e) => {
+        setIsChecked(e.target.checked);
+    }
+
+    return (
+        <Label key={`${uniqueKey}-${option}-label`} mb={2}>
+            <Radio 
+                value={option} ref={register({required: question.required})} value={watch(identifier)} name={question.id}
+                key={`${uniqueKey}-${option}-radio`} onChange={handleOnChange}
+            />
+            {/* TODO-text - separate this out to its own style. Search TODO-text to find all */}
+            <Text key={`${uniqueKey}-${option}-text`} sx={{maxWidth: '90%'}}>{option}</Text>
+            {isChecked?(<Input variant="noBorder" name={identifier} ref={register} key={`${uniqueKey}-${option}-custom-input`} disabled={!isChecked}/>):null}
+        </Label>
     )
 }
 
